@@ -1,13 +1,21 @@
 // ROOT COMPONENT - App.jsx
-// Lab 2: Renders the LoginPage
+// Lab 4: Client-side routing 
+// Lab 4: Two navigable pages/screens 
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
-    <div>
-      <LoginPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Page 1 - Login */}
+        <Route path="/" element={<LoginPage />} />
+        {/* Page 2 - Dashboard */}
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

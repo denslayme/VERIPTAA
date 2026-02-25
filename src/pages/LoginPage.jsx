@@ -1,49 +1,65 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthHeader from '../components/AuthHeader';
 import FeatureList from '../components/FeatureList';
 import '../styles/Auth.css';
 
 function LoginPage() {
 
-  // Lab 3: Interactive UI behavior - tab switching
+  // Lab 4: Component-level state management
   const [activeTab, setActiveTab] = useState('login');
+  const [idnumber, setIDNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  // Object - system information passed as props
+  // Lab 4: Client-side navigation
+  const navigate = useNavigate();
+
   const system = {
     name: 'VERIPTA',
     description: 'PTA Payment Verification System',
     campus: 'USTP - CDO Campus'
   };
 
-  // Array - features list passed as props
   const features = [
     'Secure Payment Verification',
     'Real-time Transaction Monitoring',
     'Automated Receipt Processing',
   ];
 
+  // Lab 4: Form submission - triggers navigation
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (activeTab === 'login') {
+      // Lab 4: Navigate to second page (client-side routing)
+      navigate('/dashboard');
+    } else {
+      alert('Account created for: ' + idnumber);
+      setActiveTab('login');
+    }
+  }
+
   return (
     <div className="page">
 
-      {/* LEFT SIDE - Reusable FeatureList component with props */}
+      {/* LEFT SIDE - Reusable FeatureList component */}
       <FeatureList
         systemName={system.name}
         description={system.description}
         features={features}
       />
 
-      {/* RIGHT SIDE - login/signup form */}
       <div className="right">
         <div className="box">
 
-          {/* Reusable AuthHeader component with props */}
+          {/* Reusable AuthHeader component */}
           <AuthHeader
             title={system.name}
             description={system.description}
             campus={system.campus}
           />
 
-          {/* Lab 3: Interactive tab switching - visible UI update on click */}
+          {/* Lab 4: Tab switching - visible UI update from state */}
           <div className="tabs">
             <button
               className={activeTab === 'login' ? 'active' : ''}
@@ -55,25 +71,31 @@ function LoginPage() {
             >Sign Up</button>
           </div>
 
-          {/* Form - no controlled inputs yet*/}
-          <form>
+          {/* Lab 4: Controlled form inputs using useState */}
+          <form onSubmit={handleSubmit}>
             <div className="group">
               <label>ID Number</label>
-              <input type="text" placeholder="Enter ID Number" />
+              {/* Lab 4: Controlled input - value tied to state */}
+              <input type="text" placeholder="Enter ID Number"
+                value={idnumber}
+                onChange={(e) => setIDNumber(e.target.value)} required />
             </div>
-            {/* Lab 3: Conditional rendering based on active tab */}
             {activeTab === 'signup' && (
               <div className="group">
                 <label>Email</label>
-                <input type="email" placeholder="Enter email" />
+                <input type="email" placeholder="Enter Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} required />
               </div>
             )}
             <div className="group">
               <label>Password</label>
               <input type="password"
-                placeholder={activeTab === 'login' ? 'Enter password' : 'Create password'} />
+                placeholder={activeTab === 'login' ? 'Enter Password' : 'Create Password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} required />
             </div>
-            <button type="button" className="btn">
+            <button type="submit" className="btn">
               {activeTab === 'login' ? 'Login' : 'Sign Up'}
             </button>
           </form>
