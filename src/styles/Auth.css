@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* MAIN PAGE - Split screen */
+.page {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* LEFT SIDE - Blue */
+.left {
+  flex: 1;
+  background: linear-gradient(135deg, #16163F);
+  color: white;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tag {
+  background: rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  width: fit-content;
+  color: #fbbf24;
+}
+
+.left h1 {
+  font-size: 64px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+}
+
+.desc {
+  font-size: 18px;
+  margin-top: -10px;
+}
+
+.list h3 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fbbf24;
+  margin-bottom: 15px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.check {
+  color: #fbbf24;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* RIGHT SIDE - White */
+.right {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 280px;
+}
+
+/* Form card */
+.box {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 1000%;
+  max-width: 500px;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg,#16163F);
+  color: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 16px 16px 0 0;
+}
+
+.header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  background: #f3f4f6;
+  margin: 20px 30px;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: white;
+  color: #1e3a8a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form */
+form {
+  padding: 0 30px 30px;
+}
+
+.group {
+  margin-bottom: 18px;
+}
+
+.group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #f59e0b, #f3880e);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+}
