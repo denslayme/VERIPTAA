@@ -90,7 +90,7 @@ function LoginPage() {
                 <input
                   id="email"
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Enter Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)} required />
               </div>
@@ -101,7 +101,7 @@ function LoginPage() {
               <input
                 id="password"
                 type="password"
-                placeholder={activeTab === 'login' ? 'Enter password' : 'Create password'}
+                placeholder={activeTab === 'login' ? 'Enter Password' : 'Create Password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} required />
             </div>
