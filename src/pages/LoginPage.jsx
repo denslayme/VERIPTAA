@@ -1,3 +1,11 @@
+// ============================================
+// PAGE COMPONENT - LoginPage
+// Lab 4: Controlled inputs with useState ✓
+// Lab 4: Form handling with handleSubmit ✓
+// Lab 4: Navigation using useNavigate ✓
+// Lab 4: Visible UI updates from state ✓
+// Lab 5: Accessible form inputs (htmlFor/id) ✓
+// ============================================
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthHeader from '../components/AuthHeader';
@@ -6,13 +14,11 @@ import '../styles/Auth.css';
 
 function LoginPage() {
 
-  // Lab 4: Component-level state management
   const [activeTab, setActiveTab] = useState('login');
   const [idnumber, setIDNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Lab 4: Client-side navigation
   const navigate = useNavigate();
 
   const system = {
@@ -27,11 +33,9 @@ function LoginPage() {
     'Automated Receipt Processing',
   ];
 
-  // Lab 4: Form submission - triggers navigation
   function handleSubmit(e) {
     e.preventDefault();
     if (activeTab === 'login') {
-      // Lab 4: Navigate to second page (client-side routing)
       navigate('/dashboard');
     } else {
       alert('Account created for: ' + idnumber);
@@ -42,7 +46,6 @@ function LoginPage() {
   return (
     <div className="page">
 
-      {/* LEFT SIDE - Reusable FeatureList component */}
       <FeatureList
         systemName={system.name}
         description={system.description}
@@ -52,14 +55,12 @@ function LoginPage() {
       <div className="right">
         <div className="box">
 
-          {/* Reusable AuthHeader component */}
           <AuthHeader
             title={system.name}
             description={system.description}
             campus={system.campus}
           />
 
-          {/* Lab 4: Tab switching - visible UI update from state */}
           <div className="tabs">
             <button
               className={activeTab === 'login' ? 'active' : ''}
@@ -71,30 +72,40 @@ function LoginPage() {
             >Sign Up</button>
           </div>
 
-          {/* Lab 4: Controlled form inputs using useState */}
           <form onSubmit={handleSubmit}>
             <div className="group">
-              <label>ID Number</label>
-              {/* Lab 4: Controlled input - value tied to state */}
-              <input type="text" placeholder="Enter ID Number"
+              {/* Lab 5: htmlFor and id added for accessibility */}
+              <label htmlFor="idnumber">ID Number</label>
+              <input
+                id="idnumber"
+                type="text"
+                placeholder="Enter ID Number"
                 value={idnumber}
                 onChange={(e) => setIDNumber(e.target.value)} required />
             </div>
+
             {activeTab === 'signup' && (
               <div className="group">
-                <label>Email</label>
-                <input type="email" placeholder="Enter Email"
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)} required />
               </div>
             )}
+
             <div className="group">
-              <label>Password</label>
-              <input type="password"
-                placeholder={activeTab === 'login' ? 'Enter Password' : 'Create Password'}
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                placeholder={activeTab === 'login' ? 'Enter password' : 'Create password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} required />
             </div>
+
             <button type="submit" className="btn">
               {activeTab === 'login' ? 'Login' : 'Sign Up'}
             </button>
