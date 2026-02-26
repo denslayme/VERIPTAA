@@ -4,7 +4,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
+import UserDashboard from './pages/UserDashboard';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         {/* Page 1 - Login */}
         <Route path="/" element={<LoginPage />} />
         {/* Page 2 - Dashboard */}
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/userdashboard" element={<UserDashboard />} />
       </Routes>
     </BrowserRouter>
   );

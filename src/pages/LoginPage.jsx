@@ -36,7 +36,7 @@ function LoginPage() {
   function handleSubmit(e) {
     e.preventDefault();
     if (activeTab === 'login') {
-      navigate('/dashboard');
+      navigate('/userdashboard');
     } else {
       alert('Account created for: ' + idnumber);
       setActiveTab('login');
