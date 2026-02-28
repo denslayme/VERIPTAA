@@ -2,18 +2,16 @@
 // App.jsx — Root Component
 //
 // Route map:
+//   /                            → redirects to /loginpage
 //   /loginpage                   → LoginPage
 //   /userdashboard               → UserDashboard
-//   /usrinitiatepayment          → UserInitiatePayment  (placeholder)
-//   /usrviewtransactionhistory   → UserViewTransHistory (placeholder)
+//   /usrinitiatepayment          → UserInitiatePayment
+//   /usrviewtranshistory         → UserViewTransHistory
 //   /admindashboard              → AdminDashboard
-//   /admin/upload-transactions   → placeholder (not yet implemented)
-//   /admin/review-submissions    → placeholder (not yet implemented)
-//   /admin/reports               → placeholder (not yet implemented)
 // ============================================================
 
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import LoginPage            from './pages/LoginPage';
 import UserDashboard        from './pages/UserDashboard';
@@ -26,20 +24,23 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* ── Login ── */}
+        {/* Root path → redirect to login so the page isn't blank */}
+        <Route path="/" element={<Navigate to="/loginpage" replace />} />
+
+        {/* Login */}
         <Route path="/loginpage" element={<LoginPage />} />
 
-        {/* ── User pages ── */}
-        <Route path="/userdashboard"             element={<UserDashboard />} />
-        <Route path="/usrinitiatepayment"        element={<UserInitiatePayment />} />
-        <Route path="/usrviewtransactionhistory" element={<UserViewTransHistory />} />
+        {/* User pages */}
+        <Route path="/userdashboard"         element={<UserDashboard />} />
+        <Route path="/usrinitiatepayment"    element={<UserInitiatePayment />} />
+        <Route path="/usrviewtranshistory"   element={<UserViewTransHistory />} />
 
-        {/* ── Admin pages ── */}
+        {/* Admin pages */}
         <Route path="/admindashboard" element={<AdminDashboard />} />
-        {/* Admin sub-pages — add imports + components when ready:
-        <Route path="/admin/upload-transactions"  element={<UploadTransactionsPage />} />
-        <Route path="/admin/review-submissions"   element={<ReviewSubmissionsPage />} />
-        <Route path="/admin/reports"              element={<ViewReportsPage />} />
+        {/* Admin sub-pages — uncomment when ready:
+        <Route path="/admin/upload-transactions" element={<UploadTransactionsPage />} />
+        <Route path="/admin/review-submissions"  element={<ReviewSubmissionsPage />} />
+        <Route path="/admin/reports"             element={<ViewReportsPage />} />
         */}
 
       </Routes>

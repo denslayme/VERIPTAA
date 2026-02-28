@@ -16,7 +16,7 @@
 import React, { useState } from 'react';
 import "../styles/Dashboards.css";
 
-function Navbar({ variant = "user", onLogout, onOpenModal }) {
+function NavBar({ variant = "user", onLogout, onOpenModal }) {
 
   // ── Dropdown state (only relevant for user variant) ───────
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -88,4 +88,4 @@ function Navbar({ variant = "user", onLogout, onOpenModal }) {
   );
 }
 
-export default Navbar;
+export default NavBar;
