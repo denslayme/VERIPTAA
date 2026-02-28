@@ -1,10 +1,12 @@
-/* Contains styles for:
-   1. UserDashboard  (lines ~10–250)
-   2. AdminDashboard (lines ~255–450)
-   3. Shared / Modal styles (lines ~455–end)
+/* ============================================================
+   Contains styles for:
+   1. Shared Navbar (Navbar.jsx component)   — lines ~15–110
+   2. UserDashboard                          — lines ~115–250
+   3. AdminDashboard                         — lines ~255–420
+   4. Shared Modal styles                    — lines ~425–end
+   ============================================================ */
 
-   SHARED BASE
-   ───────────────────────────────────────────── */
+/* ── SHARED BASE ─────────────────────────────────────────── */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,17 +19,14 @@ body {
   color: #1a1a2e;
 }
 
-/* SECTION 1 — USER DASHBOAR*/
+/* ============================================================
+   SECTION 1 — SHARED NAVBAR (used by Navbar.jsx component)
+   ============================================================ */
 
-/* ── User: Page wrapper ── */
-.user-page {
-  min-height: 100vh;
-  background-color: #eef0f5;
-}
-
-/* ── User: Navbar ── */
-.user-navbar {
-  display: flex;
+/* ── Navbar: Bar container ──
+   FLEXBOX: row layout, logo on left, icons on right */
+.navbar {
+  display: flex;                  /* FLEXBOX */
   align-items: center;
   justify-content: space-between;
   padding: 18px 24px;
@@ -38,40 +37,43 @@ body {
   z-index: 100;
 }
 
-.user-navbar__logo {
+.navbar__logo {
   font-size: 22px;
   font-weight: 700;
   color: #1a1a2e;
   letter-spacing: -0.5px;
 }
 
-.user-navbar__actions {
-  display: flex;
+/* ── Navbar: Right-side icon group ──
+   FLEXBOX: lays out profile + logout icons in a row */
+.navbar__actions {
+  display: flex;                  /* FLEXBOX */
   gap: 16px;
   align-items: center;
   position: relative;
 }
 
-/* ── User: Navbar icon buttons ── */
-.user-navbar__icon-btn {
+/* ── Navbar: Icon buttons ──
+   FLEXBOX: centers SVG icon inside the button */
+.navbar__icon-btn {
   background: none;
   border: none;
   cursor: pointer;
   padding: 6px;
   border-radius: 50%;
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   align-items: center;
   justify-content: center;
   color: #1a1a2e;
   transition: background 0.2s;
 }
 
-.user-navbar__icon-btn:hover {
+.navbar__icon-btn:hover {
   background: #f0f0f5;
 }
 
-/* ── User: Profile dropdown ── */
-.user-profile-dropdown {
+/* ── Navbar: Profile dropdown menu ── */
+.navbar__dropdown {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
@@ -90,8 +92,10 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.user-profile-dropdown__item {
-  display: flex;
+/* ── Navbar: Dropdown items ──
+   FLEXBOX: icon emoji + text side by side */
+.navbar__dropdown-item {
+  display: flex;                  /* FLEXBOX */
   align-items: center;
   gap: 10px;
   padding: 12px 18px;
@@ -101,73 +105,92 @@ body {
   transition: background 0.15s;
 }
 
-.user-profile-dropdown__item:hover {
+.navbar__dropdown-item:hover {
   background: #f4f5f9;
 }
 
-/* ── User: Main body ── */
+/* ============================================================
+   SECTION 2 — USER DASHBOARD
+   ============================================================ */
+
+/* ── User: Page wrapper ── */
+.user-page {
+  min-height: 100vh;
+  background-color: #eef0f5;
+}
+
+/* ── User: Main body ──
+   No max-width cap so content fills the screen like screenshot 2 */
 .user-body {
-  padding: 28px 24px;
-  max-width: 780px;
+  padding: 20px 24px;
   margin: 0 auto;
 }
 
-/* ── User: Name / ID row ── */
+/* ── User: Name / ID row ──
+   FLEXBOX: places Full Name and ID Number side by side */
 .user-info-row {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 28px;
-  font-size: 14px;
-  color: #444;
+  display: flex;                  /* FLEXBOX */
+  gap: 60px;
+  margin-bottom: 24px;
+  align-items: flex-end;
 }
 
+/* ── User: Each Name/ID item ──
+   FLEXBOX: stacks label above value vertically */
 .user-info-row__item {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
+/* Label text e.g. "Full Name :" "ID Number :" */
 .user-info-row__label {
-  font-weight: 600;
-  color: #888;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  color: #555;
+  font-size: 13px;
 }
 
+/* Value text e.g. "Maria Santos" "2023-0001"
+   Font size 25px as specified */
 .user-info-row__value {
-  font-size: 15px;
+  font-size: 25px;
   color: #1a1a2e;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* ── User: Section title ── */
+/* ── User: Section titles ("Quick Actions", "Recent Payments")
+   Font size 35px as specified */
 .user-section-title {
-  font-size: 16px;
+  font-size: 35px;
   font-weight: 700;
   color: #1a1a2e;
   margin-bottom: 14px;
 }
 
-/* ── User: Quick action cards row ── */
+/* ── User: Quick action cards row ──
+   GRID: 2-column equal layout for the two action cards */
 .user-quick-actions {
-  display: grid;
+  display: grid;                        /* GRID */
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
+/* ── User: Individual quick action card ──
+   FLEXBOX: stacks icon above label vertically
+   Taller padding so card has more presence like screenshot 2 */
 .user-quick-action-card {
   background: #ffffff;
-  border-radius: 12px;
-  padding: 24px 20px;
-  display: flex;
+  border-radius: 10px;
+  padding: 28px 24px 24px;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   cursor: pointer;
   border: 1px solid #e8eaf0;
   transition: box-shadow 0.2s, transform 0.15s;
+  min-height: 120px;
 }
 
 .user-quick-action-card:hover {
@@ -175,30 +198,35 @@ body {
   transform: translateY(-2px);
 }
 
+/* Icon size scaled up to match screenshot 2 */
 .user-quick-action-card__icon {
-  font-size: 28px;
   color: #1a1a2e;
+  display: flex;
+  align-items: center;
 }
 
+/* Card label font size 25px as specified */
 .user-quick-action-card__label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
   color: #1a1a2e;
 }
 
-/* ── User: Recent payments list ── */
+/* ── User: Recent payments container ── */
 .user-recent-payments {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid #e8eaf0;
   overflow: hidden;
 }
 
+/* ── User: Each payment row ──
+   FLEXBOX: title+date on left, amount on right */
 .user-payment-item {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   justify-content: space-between;
   align-items: center;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-bottom: 1px solid #f2f3f7;
   transition: background 0.15s;
 }
@@ -207,71 +235,42 @@ body {
   border-bottom: none;
 }
 
+/* ── User: Left side of payment row ──
+   FLEXBOX: stacks title above date */
 .user-payment-item__left {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
+/* Payment name font size 27px as specified */
 .user-payment-item__title {
-  font-size: 14px;
+  font-size: 27px;
   font-weight: 500;
   color: #1a1a2e;
 }
 
+/* Date/time font size 18px as specified */
 .user-payment-item__date {
-  font-size: 11px;
+  font-size: 18px;
   color: #999;
 }
 
+/* Amount font size 27px as specified */
 .user-payment-item__amount {
-  font-size: 14px;
+  font-size: 27px;
   font-weight: 600;
   color: #c0392b;
 }
 
-/* SECTION 2 — ADMIN DASHBOARD */
+/* ============================================================
+   SECTION 3 — ADMIN DASHBOARD
+   ============================================================ */
 
 /* ── Admin: Page wrapper ── */
 .admin-page {
   min-height: 100vh;
   background-color: #eef0f5;
-}
-
-/* ── Admin: Navbar ── */
-.admin-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 24px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #dde0e8;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.admin-navbar__logo {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1a1a2e;
-  letter-spacing: -0.5px;
-}
-
-.admin-navbar__logout-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  color: #1a1a2e;
-  transition: background 0.2s;
-}
-
-.admin-navbar__logout-btn:hover {
-  background: #f0f0f5;
 }
 
 /* ── Admin: Main body ── */
@@ -290,14 +289,16 @@ body {
   margin-bottom: 28px;
 }
 
-/* ── Admin: Stats row ── */
+/* ── Admin: Stats row ──
+   GRID: 3 equal columns for Total / Pending / Verified cards */
 .admin-stats-row {
-  display: grid;
+  display: grid;                        /* GRID */
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 36px;
 }
 
+/* ── Admin: Individual stat card ── */
 .admin-stat-card {
   background: #ffffff;
   border-radius: 14px;
@@ -328,9 +329,10 @@ body {
   margin-bottom: 14px;
 }
 
-/* ── Admin: Quick action list ── */
+/* ── Admin: Quick actions list container ──
+   FLEXBOX: stacks action rows vertically */
 .admin-quick-actions {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
   gap: 2px;
   background: #ffffff;
@@ -339,16 +341,16 @@ body {
   overflow: hidden;
 }
 
+/* ── Admin: Each quick action row ──
+   FLEXBOX: icon on left, text block on right, side by side */
 .admin-quick-action-item {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   align-items: center;
   gap: 16px;
   padding: 18px 20px;
   cursor: pointer;
   border-bottom: 1px solid #f2f3f7;
   transition: background 0.15s;
-  text-decoration: none;
-  color: inherit;
 }
 
 .admin-quick-action-item:last-child {
@@ -365,8 +367,10 @@ body {
   flex-shrink: 0;
 }
 
+/* ── Admin: Action item text block ──
+   FLEXBOX: stacks title above subtitle */
 .admin-quick-action-item__text {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
   gap: 3px;
 }
@@ -382,17 +386,18 @@ body {
   color: #999;
 }
 
-/* ── Admin: Empty placeholder pages ── */
+/* ── Admin/User: Empty placeholder pages ──
+   FLEXBOX: centers placeholder content vertically + horizontally */
 .admin-empty-page {
   min-height: 100vh;
   background: #eef0f5;
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
 }
 
 .admin-empty-page__content {
   flex: 1;
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -423,16 +428,17 @@ body {
 }
 
 /* ============================================================
-   SECTION 3 — SHARED MODAL STYLES
-   (Used by both Change Password, Update Email, Update Phone)
+   SECTION 4 — SHARED MODAL STYLES
+   Used by: ChangePasswordModal, UpdateEmailModal, UpdatePhoneModal
    ============================================================ */
 
-/* ── Modal: Overlay backdrop ── */
+/* ── Modal: Full-screen overlay backdrop ──
+   FLEXBOX: centers the modal card on screen */
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   align-items: center;
   justify-content: center;
   z-index: 500;
@@ -444,7 +450,7 @@ body {
   to   { opacity: 1; }
 }
 
-/* ── Modal: Card ── */
+/* ── Modal: Card box ── */
 .modal-card {
   background: #ffffff;
   border-radius: 14px;
@@ -460,9 +466,10 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Modal: Header row ── */
+/* ── Modal: Header row ──
+   FLEXBOX: title on left, close button on right */
 .modal-header {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -490,9 +497,10 @@ body {
   color: #555;
 }
 
-/* ── Modal: Form fields ── */
+/* ── Modal: Each form field group ──
+   FLEXBOX: stacks label above input vertically */
 .modal-field {
-  display: flex;
+  display: flex;                  /* FLEXBOX */
   flex-direction: column;
   gap: 6px;
   margin-bottom: 16px;
@@ -504,6 +512,7 @@ body {
   color: #555;
 }
 
+/* ── Modal: Text inputs ── */
 .modal-input {
   padding: 10px 12px;
   border-radius: 8px;
@@ -518,7 +527,7 @@ body {
   border-color: #1a1a2e;
 }
 
-/* ── Modal: Success/error message ── */
+/* ── Modal: Success / Error feedback message ── */
 .modal-message {
   font-size: 13px;
   padding: 9px 12px;
