@@ -1,11 +1,3 @@
-// ============================================
-// PAGE COMPONENT - LoginPage
-// Lab 4: Controlled inputs with useState ✓
-// Lab 4: Form handling with handleSubmit ✓
-// Lab 4: Navigation using useNavigate ✓
-// Lab 4: Visible UI updates from state ✓
-// Lab 5: Accessible form inputs (htmlFor/id) ✓
-// ============================================
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthHeader from '../components/AuthHeader';
