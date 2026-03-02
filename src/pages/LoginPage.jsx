@@ -102,7 +102,9 @@ function LoginPage() {
               {activeTab === 'login' ? 'Login' : 'Sign Up'}
             </button>
           </form>
-
+          <div>
+            <text onClick={() => navigate("/admindashboard")}>Login As Admin</text>
+          </div>
         </div>
       </div>
     </div>

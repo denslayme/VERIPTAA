@@ -28,8 +28,8 @@
 // ── IMPORTS ──────────────────────────────────────────────────
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/NavBar';
-import "../styles/Dashboards.css";
+import Navbar from '../../components/NavBar';
+import "../../styles/Dashboards.css";
 
 // ── MOCK DATA ─────────────────────────────────────────────────
 // Replace with real auth context / API response later
