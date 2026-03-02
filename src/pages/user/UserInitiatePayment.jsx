@@ -11,8 +11,8 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/NavBar';
-import "../styles/Dashboards.css";
+import Navbar from '../../components/NavBar';
+import "../../styles/Dashboards.css";
 
 function UserInitiatePayment() {
   const navigate = useNavigate();

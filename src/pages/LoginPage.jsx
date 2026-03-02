@@ -102,7 +102,13 @@ function LoginPage() {
               {activeTab === 'login' ? 'Login' : 'Sign Up'}
             </button>
           </form>
-
+          <h6
+            onClick={() => navigate("/admindashboard")}
+            style={{ cursor: 'pointer', textAlign: 'center', margin: '0.2rem', color: '#16163F' }}
+          >
+            Login as Admin
+          </h6>
+          
         </div>
       </div>
     </div>

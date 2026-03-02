@@ -194,3 +194,7 @@ form {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
 }
+
+.admin-link:hover {
+  color: #0056b3;
+}

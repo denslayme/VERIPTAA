@@ -1,0 +1,123 @@
+/* ============================= */
+/* Results Page Styling */
+/* ============================= */
+
+.results-container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.results-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Status Buttons */
+
+.status-buttons button {
+  margin-right: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.status-buttons button.active {
+  background: #16163F;
+  color: white;
+}
+
+/* Print Dropdown */
+
+.print-dropdown {
+  position: relative;
+}
+
+.print-dropdown button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #16163F;
+  color: white;
+  cursor: pointer;
+}
+
+.print-menu {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  overflow: hidden;
+}
+
+.print-menu div {
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.print-menu div:hover {
+  background: #f3f4f6;
+}
+
+/* Table */
+
+.table-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f3f4f6;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+}
+
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+/* Status Badges */
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.status-badge.confirmed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.unconfirmed {
+  background: #fee2e2;
+  color: #991b1b;
+}

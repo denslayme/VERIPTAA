@@ -11,8 +11,8 @@
 // ── 1. IMPORTS ───────────────────────────────────────────────
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/NavBar';       // reusable navbar component
-import "../styles/Dashboards.css";
+import Navbar from '../../components/NavBar';       // reusable navbar component 
+import "../../styles/Dashboards.css";
 
 // ── 2. MOCK STATS DATA ────────────────────────────────────────
 // Replace with real API data when ready
@@ -73,7 +73,7 @@ function AdminDashboard() {
         <div className="admin-quick-actions">
 
           {/* Action 1: Upload Transaction History */}
-          <div className="admin-quick-action-item" onClick={() => navigate("/admin/upload-transactions")}>
+          <div className="admin-quick-action-item" onClick={() => navigate("/admintransactionupload")}>
             <span className="admin-quick-action-item__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <polyline points="16 16 12 12 8 16" />
@@ -88,7 +88,7 @@ function AdminDashboard() {
           </div>
 
           {/* Action 2: Review Submissions */}
-          <div className="admin-quick-action-item" onClick={() => navigate("/admin/review-submissions")}>
+          <div className="admin-quick-action-item" onClick={() => navigate("/adminresults")}>
             <span className="admin-quick-action-item__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -104,7 +104,7 @@ function AdminDashboard() {
           </div>
 
           {/* Action 3: View Reports */}
-          <div className="admin-quick-action-item" onClick={() => navigate("/admin/reports")}>
+          <div className="admin-quick-action-item" onClick={() => navigate("/--")}>
             <span className="admin-quick-action-item__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <line x1="18" y1="20" x2="18" y2="10" />

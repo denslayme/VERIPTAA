@@ -14,10 +14,12 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import LoginPage            from './pages/LoginPage';
-import UserDashboard        from './pages/UserDashboard';
-import AdminDashboard       from './pages/AdminDashboard';
-import UserInitiatePayment  from './pages/UserInitiatePayment';
-import UserViewTransHistory from './pages/UserViewTransHistory';
+import UserDashboard        from './pages/user/UserDashboard';
+import AdminDashboard       from './pages/admin/AdminDashboard';
+import UserInitiatePayment  from './pages/user/UserInitiatePayment';
+import UserViewTransHistory from './pages/user/UserViewTransHistory';
+import AdminTransactionUpload       from './pages/admin/AdminTransactionUpload';
+import AdminResults       from './pages/admin/AdminResults';
 
 function App() {
   return (
@@ -37,11 +39,8 @@ function App() {
 
         {/* Admin pages */}
         <Route path="/admindashboard" element={<AdminDashboard />} />
-        {/* Admin sub-pages — uncomment when ready:
-        <Route path="/admin/upload-transactions" element={<UploadTransactionsPage />} />
-        <Route path="/admin/review-submissions"  element={<ReviewSubmissionsPage />} />
-        <Route path="/admin/reports"             element={<ViewReportsPage />} />
-        */}
+        <Route path="/admintransactionupload" element={<AdminTransactionUpload />} />
+        <Route path="/adminresults" element={<AdminResults />} />
 
       </Routes>
     </BrowserRouter>
