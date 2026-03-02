@@ -186,6 +186,23 @@ const LoginPage: React.FC = () => {
                   : 'Sign Up'}
               </Text>
             </Pressable>
+
+            {/* LOGIN AS ADMIN */}
+            <Pressable
+              onPress={() => navigation.replace('AdminDashboard' as any)}
+              style={{ margin: 15 }}
+            >
+              <Text
+                style={{
+                  color: '#16163F',
+                  textAlign: 'center',
+                  fontSize: 10,
+                  fontWeight: '600',
+                }}
+              >
+                Login as Admin
+              </Text>
+            </Pressable>
           </View>
         </View>
       </SafeAreaView>
