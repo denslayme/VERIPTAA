@@ -5,7 +5,7 @@
 //   /                            → redirects to /loginpage
 //   /loginpage                   → LoginPage
 //   /userdashboard               → UserDashboard
-//   /usrinitiatepayment          → UserInitiatePayment
+//   /userimageupload             → UserImageUpload
 //   /usrviewtranshistory         → UserViewTransHistory
 //   /admindashboard              → AdminDashboard
 // ============================================================
@@ -16,8 +16,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage            from './pages/LoginPage';
 import UserDashboard        from './pages/user/UserDashboard';
 import AdminDashboard       from './pages/admin/AdminDashboard';
-import UserInitiatePayment  from './pages/user/UserInitiatePayment';
-import UserViewTransHistory from './pages/user/UserViewTransHistory';
+import UserImageUpload      from './pages/user/UserImageUpload';
+import UserViewSubHistory   from './pages/user/UserViewSubHistory';
 import AdminTransactionUpload       from './pages/admin/AdminTransactionUpload';
 import AdminResults       from './pages/admin/AdminResults';
 
@@ -34,8 +34,8 @@ function App() {
 
         {/* User pages */}
         <Route path="/userdashboard"         element={<UserDashboard />} />
-        <Route path="/usrinitiatepayment"    element={<UserInitiatePayment />} />
-        <Route path="/usrviewtranshistory"   element={<UserViewTransHistory />} />
+        <Route path="/userimageupload"       element={<UserImageUpload />} />
+        <Route path="/userviewsubhistory"   element={<UserViewSubHistory />} />
 
         {/* Admin pages */}
         <Route path="/admindashboard" element={<AdminDashboard />} />
