@@ -13,7 +13,7 @@
 //
 // ✓ Lab 4: Navigation using useNavigate
 //     → handleLogout() → navigate("/loginpage")
-//     → Quick Action cards → navigate("/usrinitiatepayment"), etc.
+//     → Quick Action cards → navigate("/userproofupload"), etc.
 //
 // ✓ Lab 4: Visible UI updates from state
 //     → dropdownOpen state shows/hides the profile dropdown
@@ -291,7 +291,7 @@ function UserDashboard() {
         <h2 className="user-section-title">Quick Actions</h2>
         <div className="user-quick-actions">
 
-          <div className="user-quick-action-card" onClick={() => navigate("/usrinitiatepayment")}>
+          <div className="user-quick-action-card" onClick={() => navigate("/userimageupload")}>
             <span className="user-quick-action-card__icon">
               <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
                 <rect x="2" y="6" width="20" height="12" rx="2" />
@@ -299,10 +299,10 @@ function UserDashboard() {
                 <path d="M6 12h.01M18 12h.01" />
               </svg>
             </span>
-            <span className="user-quick-action-card__label">Initiate payment</span>
+            <span className="user-quick-action-card__label">Upload proof of payment</span>
           </div>
 
-          <div className="user-quick-action-card" onClick={() => navigate("/usrviewtranshistory")}>
+          <div className="user-quick-action-card" onClick={() => navigate("/userviewsubhistory")}>
             <span className="user-quick-action-card__icon">
               <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -311,7 +311,7 @@ function UserDashboard() {
                 <line x1="8" y1="17" x2="12" y2="17" />
               </svg>
             </span>
-            <span className="user-quick-action-card__label">View payment history</span>
+            <span className="user-quick-action-card__label">View submission history</span>
           </div>
 
         </div>

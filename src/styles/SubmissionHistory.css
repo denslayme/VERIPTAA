@@ -1,0 +1,63 @@
+/* ============================= */
+/* Submission Page Styling */
+/* ============================= */
+
+.status-container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+/* Table */
+
+.table-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f3f4f6;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+}
+
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+/* Status Badges */
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.status-badge.confirmed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.unconfirmed {
+  background: #fee2e2;
+  color: #991b1b;
+}
