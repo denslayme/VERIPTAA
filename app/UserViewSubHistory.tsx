@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import UserHeader from "../components/UserHeader";
 
@@ -14,8 +14,9 @@ const UserViewSubHistory = () => {
     <SafeAreaView style={styles.safeArea}>
       <UserHeader title="Submission History" />
 
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.pageTitle}>My Submissions</Text>
+
         <View style={styles.tableCard}>
           {mockData.map((item, index) => (
             <View key={index} style={styles.row}>
@@ -45,7 +46,7 @@ const UserViewSubHistory = () => {
             </View>
           ))}
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
