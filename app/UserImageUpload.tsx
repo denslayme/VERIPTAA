@@ -25,22 +25,22 @@ const UserImageUpload: React.FC = () => {
     const [error, setError] = useState("");
 
     const handleImagePick = async () => {
-    try {
-        const result = await ImagePicker.launchImageLibraryAsync({
-            allowsEditing: false,
-            quality: 1,
-        });
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                allowsEditing: false,
+                quality: 1,
+            });
 
-        if (result.canceled) return;
+            if (result.canceled) return;
 
-        const image = result.assets[0];
-        setSelectedImage(image);
-        setError("");
-    } catch (err) {
-        console.error(err);
-        setError("An error occurred while picking the file.");
-    }
-};
+            const image = result.assets[0];
+            setSelectedImage(image);
+            setError("");
+        } catch (err) {
+            console.error(err);
+            setError("An error occurred while picking the file.");
+        }
+    };
 
     const [reference, setReference] = useState("");
     const [amount, setAmount] = useState("");
@@ -51,7 +51,7 @@ const UserImageUpload: React.FC = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.safeArea}>
             <UserHeader title="Proof of Payment Submission" />
 
             <ScrollView contentContainerStyle={styles.uploadContainer}>
@@ -121,6 +121,8 @@ const UserImageUpload: React.FC = () => {
 export default UserImageUpload;
 
 const styles = StyleSheet.create({
+    safeArea: { flex: 1, backgroundColor: "#f9fafb" },
+
     uploadContainer: {
         flexGrow: 1,
         margin: 20,
