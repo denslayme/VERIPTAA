@@ -21,6 +21,8 @@ import UpdatePhoneModal from "../components/UpdatePhoneModal";
 type RootStackParamList = {
   index: undefined;
   UserDashboard: undefined;
+  UserImageUpload: undefined;
+  UserViewSubHistory: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<
@@ -96,14 +98,20 @@ const UserDashboard: React.FC = () => {
           <Text style={styles.sectionTitle}>Quick Actions</Text>
 
           <View style={styles.quickActions}>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("UserImageUpload")}
+            >
               <Text style={styles.cardIcon}>📤</Text>
               <Text style={styles.cardLabel}>Upload Proof</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={() => navigation.navigate("UserViewSubHistory")}
+            >
               <Text style={styles.cardIcon}>📄</Text>
-              <Text style={styles.cardLabel}>View Payments</Text>
+              <Text style={styles.cardLabel}>View Submission History</Text>
             </TouchableOpacity>
           </View>
 
