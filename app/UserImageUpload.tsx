@@ -1,9 +1,8 @@
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import * as ImagePicker from "expo-image-picker";
 import React, { useState } from "react";
-import { ActivityIndicator, ScrollView, StyleSheet, Text, TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import UserHeader from "../components/UserHeader";
@@ -24,74 +23,31 @@ const UserImageUpload: React.FC = () => {
 
     const [selectedImage, setSelectedImage] = useState<ImagePicker.ImagePickerAsset | null>(null);
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-
-    const [reference, setReference] = useState("");
-    const [amount, setAmount] = useState("");
-    const [showDatePicker, setShowDatePicker] = useState(false);
-    const [date, setDate] = useState(new Date());
-
-    const onChangeDate = (event: any, selectedDate?: Date) => {
-        setShowDatePicker(false);
-
-        if (selectedDate) {
-            setDate(selectedDate);
-        }
-    };
-
-    const handleSubmit = () => {
-        if (!reference) {
-            setError("Reference is required");
-            return;
-        }
-
-        if (!amount) {
-            setError("Amount is required");
-            return;
-        }
-
-        if (!selectedImage) {
-            setError("Please upload a payment receipt");
-            return;
-        }
-
-        setLoading(true);
-
-        setTimeout(() => {
-            setLoading(false);
-            navigation.navigate("UserViewSubHistory");
-        }, 1500);
-    };
 
     const handleImagePick = async () => {
-        const permission =
-            await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-        if (!permission.granted) {
-            setError("Permission to access photos is required.");
-            return;
-        }
-
+    try {
         const result = await ImagePicker.launchImageLibraryAsync({
             allowsEditing: false,
             quality: 1,
-            allowsMultipleSelection: false,
         });
 
         if (result.canceled) return;
 
         const image = result.assets[0];
-
-        if (
-            !image.mimeType?.includes("jpeg") &&
-            !image.mimeType?.includes("png")
-        ) {
-            setError("Only PNG and JPEG images are allowed.");
-            return;
-        }
-
         setSelectedImage(image);
         setError("");
+    } catch (err) {
+        console.error(err);
+        setError("An error occurred while picking the file.");
+    }
+};
+
+    const [reference, setReference] = useState("");
+    const [amount, setAmount] = useState("");
+    const [date, setDate] = useState("");
+
+    const handleSubmit = () => {
+        navigation.navigate("UserViewSubHistory");
     };
 
     return (
@@ -121,16 +77,16 @@ const UserImageUpload: React.FC = () => {
 
                 {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-                {/* PAYMENT DETAILS */}
-
                 <View style={styles.detailsContainer}>
                     <Text style={styles.detailsTitle}>Payment Details</Text>
-                    <Text style={styles.subTitle}>Please review the extracted payment details carefully and make sure all the information is correct.</Text>
+                    <Text style={styles.subTitle}>
+                        Please review the extracted payment details carefully and make sure all the information is correct.
+                    </Text>
 
                     <Text>Reference Number</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Edit"
+                        placeholder="Edit reference number"
                         keyboardType="numeric"
                         value={reference}
                         onChangeText={setReference}
@@ -139,56 +95,32 @@ const UserImageUpload: React.FC = () => {
                     <Text>Amount Paid</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Edit"
+                        placeholder="Edit amount"
                         keyboardType="numeric"
                         value={amount}
                         onChangeText={setAmount}
                     />
 
                     <Text>Date of Payment</Text>
-                    <TouchableOpacity onPress={() => setShowDatePicker(true)}>
-                        <Text style={styles.input}>
-                            {date.toLocaleDateString()}
-                        </Text>
-                    </TouchableOpacity>
-
-                    {showDatePicker && (
-                        <DateTimePicker
-                            value={date}
-                            mode="date"
-                            display="default"
-                            onChange={onChangeDate}
-                        />
-                    )}
-
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter date"
+                        value={date}
+                        onChangeText={setDate}
+                    />
                 </View>
 
                 <TouchableOpacity style={styles.submitBtn} onPress={handleSubmit}>
-                    {loading ? (
-                        <ActivityIndicator color="#fff" />
-                    ) : (
-                        <Text style={styles.submitBtnText}>Submit Proof of Payment</Text>
-                    )}
+                    <Text style={styles.submitBtnText}>Submit Proof of Payment</Text>
                 </TouchableOpacity>
             </ScrollView>
         </SafeAreaView>
     );
-
-    interface RequiredTextInputProps extends TextInputProps {
-        required?: boolean;
-    }
-
-    function RequiredTextInput(props: RequiredTextInputProps) {
-        const { required, ...rest } = props;
-        return <TextInput {...rest} />;
-    }
 };
 
 export default UserImageUpload;
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#f5f5f5" },
-
     uploadContainer: {
         flexGrow: 1,
         margin: 20,
@@ -251,8 +183,8 @@ const styles = StyleSheet.create({
     detailsTitle: {
         fontSize: 20,
         fontWeight: "600",
-        marginBottom: 0,
     },
+
     subTitle: {
         color: "#666",
         marginBottom: 10,
